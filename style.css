@@ -1,0 +1,27 @@
+body {
+  background-color: black;
+}
+
+.header {
+  margin: 1em 10%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 5em;
+  color: white;
+}
+
+.clock_box {
+  margin: 0 10%;
+}
+
+.flip-clock-wrapper {
+  margin: 0!important;
+}
+
+.flip-clock-wrapper ul li a div div.inn {
+  color: black!important;
+  background-color: white!important;
+}
+
+.flip-clock-wrapper ul li a div.up:after {
+  display: none!important;
+}
