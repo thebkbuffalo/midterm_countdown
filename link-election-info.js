@@ -53,12 +53,11 @@
     $.get(checkUrlExistsUrl, function(data) {
       if (data.status !== "404") {
         var linkText = link.querySelector('.text');
-
         link.href = url;
         linkText.innerText = text;
-
-        link.classList.remove('loading');
       }
+
+      link.classList.remove('loading');
     })
   }
 
