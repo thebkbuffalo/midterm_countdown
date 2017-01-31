@@ -4,11 +4,6 @@
 
   linkElectionInfo();
 
-  var BING_MAPS_KEY = "AusoQe0fW-ZhtN1stnl6fFlxLoyhItjtHiTfhYanMYRCZhgUKabmmawuazS9kBEB",
-      BING_MAP_BASE_URL = "//dev.virtualearth.net/REST/v1/Locations/",
-      SENATE_ELECTION_BASE_URL = "https://en.wikipedia.org/wiki/United_States_Senate_election_in_",
-      HOUSE_ELECTION_BASE_URL = "https://en.wikipedia.org/wiki/United_States_House_of_Representatives_elections,_2018#";
-
   function linkElectionInfo() {
     var links = document.getElementsByClassName("election-info-btn");
 
@@ -18,54 +13,25 @@
 
     navigator.geolocation.getCurrentPosition(function(position) {
       var lat = position.coords.latitude,
-          lng = position.coords.longitude;
+          lng = position.coords.longitude,
+          url = "https://sheltered-escarpment-31930.herokuapp.com/local_election_links?lat=" + lat + "&lng=" + lng;
 
-      var url = BING_MAP_BASE_URL + lat + "," + lng + "?key=" + BING_MAPS_KEY;
+      $.getJSON(url, function(data) {
+        var senateDiv = document.getElementById("senate-link"),
+            houseDiv = document.getElementById("house-link"),
+            senateLink = senateDiv.querySelector('.election-info-btn'),
+            houseLink = houseDiv.querySelector('.election-info-btn'),
+            senateLinkText = senateLink.querySelector('.text'),
+            houseLinkText = houseLink.querySelector('.text');
 
-      $.ajax({
-        url: url,
-        dataType: "jsonp",
-        jsonp: "jsonp",
-        success: displayLocalizedLinks,
-        error: handleError,
+        senateLink.href = data.senate_url;
+        houseLink.href = data.house_url;
+        senateLinkText.innerText = data.senate_text;
+        houseLinkText.innerText = data.house_text;
+
+        senateLink.classList.remove('loading');
+        houseLink.classList.remove('loading');
       });
     });
-  }
-
-  function displayLocalizedLinks(data, status, xhr) {
-    var stateAbbr = data.resourceSets[0].resources[0].address.adminDistrict;
-
-    $.getJSON("states.json", function(states) {
-      var stateName = states[stateAbbr],
-
-          senateUrl = SENATE_ELECTION_BASE_URL + stateName.replace(' ', '_') + ",2018",
-          houseUrl = HOUSE_ELECTION_BASE_URL + stateName.replace(' ', '_'),
-
-          senateLinkText = "2018 " + stateName + " Senate Elections",
-          houseLinkText = "2018 " + stateName + " House Elections";
-
-      replaceGenericLink('senate-link', senateUrl, senateLinkText);
-      replaceGenericLink('house-link', houseUrl, houseLinkText);
-    });
-  }
-
-  function replaceGenericLink(wrapperId, url, text) {
-    var checkUrlExistsUrl = "//sheltered-escarpment-31930.herokuapp.com/response/?url=" + url,
-        wrapper = document.getElementById(wrapperId),
-        link = wrapper.querySelector('.election-info-btn');
-
-    $.get(checkUrlExistsUrl, function(data) {
-      if (data.status !== "404") {
-        var linkText = link.querySelector('.text');
-        link.href = url;
-        linkText.innerText = text;
-      }
-
-      link.classList.remove('loading');
-    })
-  }
-
-  function handleError(err) {
-    //TODO: no error case is handled
   }
 })();
