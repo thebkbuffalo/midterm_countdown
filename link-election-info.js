@@ -48,15 +48,12 @@
 
     $.get(checkUrlExistsUrl, function(data) {
       if (data.status !== "404") {
-        var link = document.createElement('a'),
-            wrapper = document.getElementById(wrapperId);
+        var wrapper = document.getElementById(wrapperId)
+            link = wrapper.querySelector('a'),
+            linkText = link.querySelector('span');
 
-        link.target = "_blank";
         link.href = url;
-        link.innerText = text;
-
-        wrapper.innerHTML = '';
-        wrapper.append(link);
+        linkText.innerText = text;
       }
     })
   }
