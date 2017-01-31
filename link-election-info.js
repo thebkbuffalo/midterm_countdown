@@ -44,16 +44,20 @@
   }
 
   function replaceGenericLink(wrapperId, url, text) {
-    var checkUrlExistsUrl = "//sheltered-escarpment-31930.herokuapp.com/response/?url=" + url;
+    var checkUrlExistsUrl = "//sheltered-escarpment-31930.herokuapp.com/response/?url=" + url,
+        wrapper = document.getElementById(wrapperId)
+        link = wrapper.querySelector('a');
+
+    link.classList.add('loading');
 
     $.get(checkUrlExistsUrl, function(data) {
       if (data.status !== "404") {
-        var wrapper = document.getElementById(wrapperId)
-            link = wrapper.querySelector('a'),
-            linkText = link.querySelector('span');
+        var linkText = link.querySelector('.text');
 
         link.href = url;
         linkText.innerText = text;
+
+        link.classList.remove('loading');
       }
     })
   }

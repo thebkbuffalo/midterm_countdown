@@ -67,9 +67,30 @@ body {
   margin: 0.2rem 0 0 0.2rem;
 }
 
-.election-info-btn .fa {
+.election-info-btn .fa-star {
   display: inline-block;
   color: #E91D0E;
   text-shadow: none;
   margin: 0 0.5rem;
+}
+
+.election-info-btn .loading {
+  display: none;
+  text-transform: none;
+  font-size: 1rem;
+  font-weight: normal;
+  text-shadow: none;
+}
+
+.election-info-btn.loading {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.election-info-btn.loading .loading {
+  display: block;
+}
+
+.election-info-btn.loading .text {
+  display: none;
 }
