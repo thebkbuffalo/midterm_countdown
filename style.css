@@ -40,7 +40,7 @@ body {
 }
 
 .election-info-btn {
-  display: block;
+  display: flex;
   padding: 1rem;
   color: white;
   font-weight: bold;
