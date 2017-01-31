@@ -14,7 +14,7 @@
     navigator.geolocation.getCurrentPosition(function(position) {
       var lat = position.coords.latitude,
           lng = position.coords.longitude,
-          url = "https://sheltered-escarpment-31930.herokuapp.com/local_election_links?lat=" + lat + "&lng=" + lng;
+          url = "//sheltered-escarpment-31930.herokuapp.com/local_election_links?lat=" + lat + "&lng=" + lng;
 
       $.getJSON(url, function(data) {
         var senateDiv = document.getElementById("senate-link"),
