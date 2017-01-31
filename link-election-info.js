@@ -45,7 +45,7 @@
 
   function replaceGenericLink(wrapperId, url, text) {
     var checkUrlExistsUrl = "//sheltered-escarpment-31930.herokuapp.com/response/?url=" + url,
-        wrapper = document.getElementById(wrapperId)
+        wrapper = document.getElementById(wrapperId),
         link = wrapper.querySelector('a');
 
     link.classList.add('loading');
