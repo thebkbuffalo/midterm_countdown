@@ -10,6 +10,12 @@
       HOUSE_ELECTION_BASE_URL = "https://en.wikipedia.org/wiki/United_States_House_of_Representatives_elections,_2018#";
 
   function linkElectionInfo() {
+    var links = document.getElementsByClassName("election-info-btn");
+
+    Array.prototype.forEach.call(links, function(link) {
+      link.classList.add('loading');
+    });
+
     navigator.geolocation.getCurrentPosition(function(position) {
       var lat = position.coords.latitude,
           lng = position.coords.longitude;
@@ -46,9 +52,7 @@
   function replaceGenericLink(wrapperId, url, text) {
     var checkUrlExistsUrl = "//sheltered-escarpment-31930.herokuapp.com/response/?url=" + url,
         wrapper = document.getElementById(wrapperId),
-        link = wrapper.querySelector('a');
-
-    link.classList.add('loading');
+        link = wrapper.querySelector('.election-info-btn');
 
     $.get(checkUrlExistsUrl, function(data) {
       if (data.status !== "404") {
