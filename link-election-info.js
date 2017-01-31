@@ -35,8 +35,8 @@
           senateUrl = SENATE_ELECTION_BASE_URL + stateName.replace(' ', '_') + ",2018",
           houseUrl = HOUSE_ELECTION_BASE_URL + stateName.replace(' ', '_'),
 
-          senateLinkText = stateName + " Senate Elections",
-          houseLinkText = stateName + " House Elections";
+          senateLinkText = "2018 " + stateName + " Senate Elections",
+          houseLinkText = "2018 " + stateName + " House Elections";
 
       replaceGenericLink('senate-link', senateUrl, senateLinkText);
       replaceGenericLink('house-link', houseUrl, houseLinkText);
