@@ -29,7 +29,7 @@
   function displayLocalizedLinks(data, status, xhr) {
     var stateAbbr = data.resourceSets[0].resources[0].address.adminDistrict;
 
-    $.getJSON("/states.json", function(states) {
+    $.getJSON("states.json", function(states) {
       var stateName = states[stateAbbr],
 
           senateUrl = SENATE_ELECTION_BASE_URL + stateName.replace(' ', '_') + ",2018",
