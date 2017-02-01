@@ -1,12 +1,12 @@
 body {
-  background-color: black;
+  background-color: white;
 }
 
 .header {
   margin: 1em 10%;
   font-family: 'Open Sans', sans-serif;
   font-size: 5em;
-  color: white;
+  color: black;
 }
 
 .clock_box {
@@ -18,12 +18,12 @@ body {
 }
 
 .flip-clock-wrapper ul li a div div.inn {
-  color: black!important;
-  background-color: white!important;
+  /*color: black!important;
+  background-color: white!important;*/
 }
 
 .flip-clock-wrapper ul li a div.up:after {
-  display: none!important;
+  /*display: none!important;*/
 }
 
 .election-info-links {
