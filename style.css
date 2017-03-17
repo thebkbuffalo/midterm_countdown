@@ -43,9 +43,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 5px 1em;
   color: white;
-  font-weight: bold;
   font-size: 1.5rem;
   font-family: sans-serif;
   line-height: 1.2;
@@ -53,10 +52,7 @@ body {
   text-transform: uppercase;
   border-radius: 0.3rem;
   text-align: center;
-  /*background: rgba(51,102,153,0.8);*/
-  /*background: linear-gradient(to bottom, rgba(51,102,153,0.8) 0%, rgba(35,32,102,0.8) 100%);*/
   background: #424242;
-  text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
 }
 
 .election-info-btn:hover {
@@ -103,4 +99,9 @@ body {
 
 .right_side {
   float: right;
+}
+
+.house_txt, .senate_txt {
+  font-size: 15px;
+  font-weight: normal!important;
 }
