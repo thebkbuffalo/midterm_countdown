@@ -3,7 +3,7 @@ body {
 }
 
 .header {
-  margin: 0 10% 1em 10%;
+  margin: 0 10% .5em 10%;
   font-family: 'Open Sans', sans-serif;
   font-size: 5em;
   color: black;
