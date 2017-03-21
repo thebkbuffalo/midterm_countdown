@@ -72,28 +72,22 @@ body {
   margin: 0 0.5rem;
 }
 
-.election-info-btn .loading {
-  display: none;
-  text-transform: none;
-  font-size: 1rem;
-  font-weight: normal;
-  text-shadow: none;
+.text {
+  padding: 0 35px;
 }
 
-.election-info-btn.loading {
-  pointer-events: none;
-  opacity: 0.5;
+.flip-clock-divider .flip-clock-label {
+  right: -37px!important;
 }
-
-.election-info-btn.loading .loading {
-  display: block;
+.flip-clock-divider.minutes .flip-clock-label {
+  right: -50px!important;
 }
-
-.election-info-btn.loading .text {
-  display: none;
+.flip-clock-divider.seconds .flip-clock-label {
+  right: -50px!important;
 }
 
 .left_side {
+  margin-top: 5em;
   float: left;
 }
 
