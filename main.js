@@ -10,11 +10,8 @@ $(document).ready(function(){
 
   $('.house_txt').empty();
   $('.senate_txt').empty();
-  $.getJSON("http://freegeoip.net/json/", function(data) {
-    var state = data.region_name
-    var time_zone = data.time_zone;
-    var latitude = data.latitude;
-    var longitude = data.longitude;
+  $.getJSON("http://ipinfo.io/", function(data) {
+    var state = data.region
     var house_url = 'https://en.wikipedia.org/wiki/United_States_House_of_Representatives_elections,_2018#/' + state
     var senate_url = 'https://en.wikipedia.org/wiki/United_States_Senate_elections,_2018#/' + state
     var house_link = $('.house_btn');

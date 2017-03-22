@@ -1,5 +1,11 @@
+html {
+  height: 100%;
+}
+
 body {
   background-color: rgba(245, 239, 230, .4);
+  position: relative;
+  min-height:100%;
 }
 
 .header {
@@ -89,6 +95,7 @@ body {
 .left_side {
   margin-top: 5em;
   float: left;
+  height:100%;
 }
 
 .right_side {
@@ -98,4 +105,19 @@ body {
 .house_txt, .senate_txt {
   font-size: 15px;
   font-weight: normal!important;
+}
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #424242;
+  text-align: center;
+  color: white;
+}
+
+footer a {
+  color: white;
 }
