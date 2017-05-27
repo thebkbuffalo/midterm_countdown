@@ -22,5 +22,37 @@ $(document).ready(function(){
     $('.house_txt').append('(' + state + ')');
     $('.senate_txt').append('(' + state + ')');
 
+    var zip = data.postal
+    $.getJSON('https://congress.api.sunlightfoundation.com/legislators/locate?zip=' + zip, function(rep_data){
+      rep_data = rep_data.results
+      $.each(rep_data, function(k, v){
+        name = v.first_name +  ' ' + v.last_name;
+        chamber = v.chamber;
+        office = v.office
+        state = v.state_name
+        fbook = 'https://www.facebook.com/' + v.facebook_id
+        twitter = 'https://twitter.com/' + v.twitter_id
+        website = v.website
+        contact = v.contact_form
+        phone = v.phone
+
+        list = $('.rep_list');
+
+        list.append('<p>' + name + '</p>');
+        list.append('<p>' + chamber + '</p>');
+        list.append('<p>' + state + '</p>');
+        list.append('<p>' + office + '</p>');
+        list.append('<p><a target=_blank href=tel:' + phone + '>' + phone + '</a></p>');
+        list.append('<p><a target=_blank href=' + contact + '>Contact</a></p>');
+        list.append('<p><a target=_blank href=' + website + '>Website</a></p>');
+        list.append('<p><a target=_blank href=' + fbook + '>Facebook</a></p>');
+        list.append('<p><a target=_blank href=' + twitter + '>Twitter</a></p>');
+        list.append('<hr>')
+        list.append('<br/>')
+
+      });
+    });
+
+
   });
 });
