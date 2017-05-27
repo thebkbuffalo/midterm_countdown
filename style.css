@@ -106,12 +106,18 @@ body {
 .right_side h1 {
   font-size: 40px;
   margin: 3em 1em 20px 0;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .rep_list {
   margin-left: 25px;
   font-size: 20px;
   text-transform: capitalize;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.rep_list p {
+  padding: 2px;
 }
 
 .house_txt, .senate_txt {
