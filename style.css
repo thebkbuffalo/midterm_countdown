@@ -114,6 +114,8 @@ body {
   font-size: 20px;
   text-transform: capitalize;
   font-family: 'Open Sans Condensed', sans-serif;
+  height: 650px;
+  overflow-y: scroll;
 }
 
 .rep_list p {
