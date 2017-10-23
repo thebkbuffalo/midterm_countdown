@@ -23,6 +23,7 @@ $(document).ready(function(){
     $('.senate_txt').append('(' + state + ')');
 
     var zip = data.postal
+    debugger
     $.getJSON('https://congress.api.sunlightfoundation.com/legislators/locate?zip=' + zip + '&callback=?', function(rep_data){
       rep_data = rep_data.results
       $.each(rep_data, function(k, v){
