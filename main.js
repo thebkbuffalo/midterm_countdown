@@ -24,33 +24,37 @@ $(document).ready(function(){
 
     var zip = data.postal
 
-    $.getJSON('https://congress.api.sunlightfoundation.com/legislators/locate?zip=' + zip + '&callback=?', function(rep_data){
-      rep_data = rep_data.results
+    // working but gotta figure out how to hide api key with just JS
+    var civic_api_key = ''
+
+    $.getJSON('https://www.googleapis.com/civicinfo/v2/representatives?address=' + zip + '&roles=legislatorLowerBody' + '&roles=legislatorUpperBody' + '&key=' + civic_api_key + '&callback=?', function(rep_data){
+      rep_data = rep_data['officials']
+      // rep_data = rep_data.results
       $.each(rep_data, function(k, v){
-        name = v.first_name +  ' ' + v.last_name;
-        chamber = v.chamber;
-        office = v.office
-        state = v.state_name
-        fbook = 'https://www.facebook.com/' + v.facebook_id
-        twitter = 'https://twitter.com/' + v.twitter_id
-        website = v.website
-        contact = v.contact_form
-        phone = v.phone
+
+        name = v.name
+        party = v.party
+        addy = v.address[0].line1
+        city = v.address[0].city
+        state = v.address[0].state
+        zip = v.address[0].zip
+        fbook = 'https://www.facebook.com/' + v.channels[0].id
+        twitter = 'https://twitter.com/' + v.channels[1].id
+        website = v.urls[0]
+        phone = v.phones[0]
 
         list = $('.rep_list');
-
-        list.append('<p>' + name + '</p>');
-        list.append('<p>' + chamber + '</p>');
-        list.append('<p>' + state + '</p>');
-        list.append('<p>' + office + '</p>');
+        list.append('<p style="font-weight:bold;">' + name + '</p>');
+        list.append('<p>' + party + '</p>');
+        list.append('<p>' + addy + '</p>');
+        list.append('<p>' + city + ', ' + state + '</p>');
+        list.append('<p>' + zip + '</p>');
         list.append('<p><a target=_blank href=tel:' + phone + '>' + phone + '</a></p>');
-        list.append('<p><a target=_blank href=' + contact + '>Contact</a></p>');
         list.append('<p><a target=_blank href=' + website + '>Website</a></p>');
         list.append('<p><a target=_blank href=' + fbook + '>Facebook</a></p>');
         list.append('<p><a target=_blank href=' + twitter + '>Twitter</a></p>');
         list.append('<hr>')
         list.append('<br/>')
-
       });
     });
 
