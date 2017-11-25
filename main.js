@@ -22,10 +22,9 @@ $(document).ready(function(){
     $('.house_txt').append('(' + state + ')');
     $('.senate_txt').append('(' + state + ')');
 
-    var zip = data.postal
+    var zip = data.postal;
 
-    // working but gotta figure out how to hide api key with just JS
-    var civic_api_key = ''
+    var civic_api_key = config.CIVIC_KEY;
 
     $.getJSON('https://www.googleapis.com/civicinfo/v2/representatives?address=' + zip + '&roles=legislatorLowerBody' + '&roles=legislatorUpperBody' + '&key=' + civic_api_key + '&callback=?', function(rep_data){
       rep_data = rep_data['officials']
@@ -50,14 +49,13 @@ $(document).ready(function(){
         list.append('<p>' + city + ', ' + state + '</p>');
         list.append('<p>' + zip + '</p>');
         list.append('<p><a target=_blank href=tel:' + phone + '>' + phone + '</a></p>');
-        list.append('<p><a target=_blank href=' + website + '>Website</a></p>');
+        list.append("<p><a target='_blank' href='"+website+"'>Website</a></p>");
         list.append('<p><a target=_blank href=' + fbook + '>Facebook</a></p>');
         list.append('<p><a target=_blank href=' + twitter + '>Twitter</a></p>');
         list.append('<hr>')
         list.append('<br/>')
       });
     });
-
 
   });
   function createCORSRequest(method, url) {
